@@ -1,0 +1,14 @@
+.git
+.cursor
+.idea
+.env
+.env.*
+!.env.example
+target
+frontend/dist
+frontend/node_modules
+frontend/test-results
+.runtime
+uploads
+*.log
+docs/images

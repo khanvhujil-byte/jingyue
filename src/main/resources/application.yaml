@@ -1,0 +1,44 @@
+server:
+  port: ${SERVER_PORT:8081}
+spring:
+  application:
+    name: shanhai-ticket
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: ${DB_URL:jdbc:mysql://127.0.0.1:3306/shanhai_ticket?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf8}
+    username: ${DB_USERNAME:shanhai}
+    password: ${DB_PASSWORD:}
+  redis:
+    host: ${REDIS_HOST:127.0.0.1}
+    port: ${REDIS_PORT:6379}
+    database: ${REDIS_DATABASE:8}
+    password: ${REDIS_PASSWORD:}
+  jackson:
+    default-property-inclusion: non_null
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:127.0.0.1:9092}
+    producer:
+      properties:
+        max.block.ms: 1000
+        delivery.timeout.ms: 10000
+        request.timeout.ms: 5000
+    consumer:
+      group-id: shanhai-ticket
+      enable-auto-commit: false
+      auto-offset-reset: earliest
+logging:
+  level:
+    root: info
+    com.hmdp.service.impl.UserServiceImpl: debug
+mybatis-plus:
+  type-aliases-package: com.hmdp.entity
+hmdp:
+  seckill:
+    topic: shanhai-ticket-order
+    outbox-stream: stream.shanhai.seckill.outbox
+  cache:
+    voucher-list:
+      mode: ${VOUCHER_CACHE_MODE:mysql}
+      refresh-after-write: 5s
+      expire-after-write: 10m
+      redis-ttl: 10m
