@@ -1,0 +1,85 @@
+server:
+  address: ${JINGYUE_BIND:127.0.0.1}
+  port: ${JINGYUE_PORT:8089}
+  tomcat:
+    threads:
+      max: ${JINGYUE_TOMCAT_THREADS:400}
+      min-spare: ${JINGYUE_TOMCAT_MIN_SPARE:20}
+    accept-count: ${JINGYUE_TOMCAT_ACCEPT_COUNT:1000}
+    max-connections: ${JINGYUE_TOMCAT_MAX_CONNECTIONS:10000}
+spring:
+  application:
+    name: jingyue-ticket
+  datasource:
+    url: jdbc:mysql://${JINGYUE_MYSQL_HOST:127.0.0.1}:${JINGYUE_MYSQL_PORT:3318}/${JINGYUE_DATABASE:jingyue_ticket_dev}?useSSL=false&allowPublicKeyRetrieval=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+    username: ${JINGYUE_MYSQL_USER:jingyue}
+    password: ${JINGYUE_MYSQL_PASSWORD:}
+    hikari:
+      maximum-pool-size: 32
+      minimum-idle: 4
+  redis:
+    host: ${JINGYUE_REDIS_HOST:127.0.0.1}
+    port: ${JINGYUE_REDIS_PORT:6398}
+    database: 0
+    password: ${JINGYUE_REDIS_PASSWORD:}
+    timeout: 2s
+  kafka:
+    bootstrap-servers: ${JINGYUE_KAFKA:127.0.0.1:19092}
+    producer:
+      acks: all
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      properties:
+        enable.idempotence: true
+        max.in.flight.requests.per.connection: 5
+        delivery.timeout.ms: 15000
+        request.timeout.ms: 5000
+        linger.ms: 5
+    consumer:
+      group-id: jingyue-ticket-v1
+      enable-auto-commit: false
+      auto-offset-reset: earliest
+      max-poll-records: 200
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    listener:
+      type: batch
+      ack-mode: manual_immediate
+      concurrency: 4
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 6MB
+  jackson:
+    time-zone: Asia/Shanghai
+jingyue:
+  development: ${JINGYUE_DEVELOPMENT:false}
+  mock-payment: ${JINGYUE_MOCK_PAYMENT:false}
+  ticket-signing-key: ${JINGYUE_TICKET_SIGNING_KEY:}
+  upload-dir: ${JINGYUE_UPLOAD_DIR:.runtime/uploads}
+  topic: jingyue-ticket-orders-v1
+  group: jingyue-ticket-v1
+  journal-gc:
+    mode: ${JINGYUE_JOURNAL_GC_MODE:queue}
+  backpressure:
+    max-outbox: 30000
+    max-kafka-lag: 50000
+    sample-max-age-ms: 5000
+  cache:
+    local-ttl-seconds: 30
+    redis-ttl-seconds: 120
+  rate:
+    submit-global: 4000
+    submit-sku: 4000
+    submit-user: 5
+    query-user: 50
+    payment-user: 10
+    redemption-user: 150
+hmdp:
+  like:
+    async-enabled: true
+    projector-delay-ms: 20
+    projector-batch-size: 1000
+logging:
+  level:
+    org.apache.kafka: WARN

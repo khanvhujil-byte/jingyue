@@ -1,7 +1,0 @@
-node_modules/
-dist/
-test-results/
-.env
-*.log
-.DS_Store
-.runtime/

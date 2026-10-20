@@ -1,0 +1,3 @@
+import fs from 'node:fs';import crypto from 'node:crypto';import path from 'node:path';import {fileURLToPath} from 'node:url';
+const file=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../.env');
+try{fs.writeFileSync(file,['JINGYUE_MYSQL_PASSWORD='+crypto.randomBytes(32).toString('hex'),'JINGYUE_MYSQL_ROOT_PASSWORD='+crypto.randomBytes(32).toString('hex'),'JINGYUE_TICKET_SIGNING_KEY='+crypto.randomBytes(48).toString('hex'),''].join('\n'),{flag:'wx',mode:0o600});console.log('已生成本机 .env。没有打印密钥；请保留此文件以继续使用历史电子票。')}catch(e){if(e.code==='EEXIST')console.log('.env 已存在，保留原密钥。');else throw e}

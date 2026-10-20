@@ -1,12 +1,25 @@
-name: Build and test
+name: Build and verify Jingyue
 on:
   push:
   pull_request:
 permissions:
   contents: read
 jobs:
+  frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Check frontend and tool syntax
+        run: |
+          node --check frontend/app.js
+          node --check frontend/server.mjs
+          for script in scripts/*.mjs; do node --check "$script"; done
   backend:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-java@v4
@@ -14,18 +27,31 @@ jobs:
           distribution: temurin
           java-version: '17'
           cache: maven
-      - run: sudo apt-get update && sudo apt-get install -y redis-server
-      - run: mvn -B -Dtest='com.hmdp.order.*Test,com.hmdp.like.*Test' test
-      - run: mvn -B -DskipTests package
-  frontend:
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: frontend
-    steps:
-      - uses: actions/checkout@v4
+          cache-dependency-path: backend/pom.xml
       - uses: actions/setup-node@v4
         with:
-          node-version: '22'
-      - run: npm test
-      - run: npm run build
+          node-version: '20'
+      - name: Create isolated data services
+        run: |
+          node scripts/init-compose-env.mjs
+          docker compose up -d --wait --wait-timeout 180 mysql redis kafka
+          docker compose run --rm topics
+      - name: Run ticket integration tests
+        run: |
+          set -a
+          source .env
+          set +a
+          export JINGYUE_DEVELOPMENT=true JINGYUE_MOCK_PAYMENT=true
+          mvn -B -f backend/pom.xml test
+      - name: Package application
+        run: mvn -B -f backend/pom.xml -DskipTests package
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ticket-test-results
+          path: backend/target/surefire-reports/
+          if-no-files-found: ignore
+      - name: Stop isolated services
+        if: always()
+        run: docker compose down -v

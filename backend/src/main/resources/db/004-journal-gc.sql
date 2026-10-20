@@ -1,0 +1,3 @@
+CREATE TABLE IF NOT EXISTS tb_ticket_journal_gc (
+ order_id BIGINT PRIMARY KEY, archived_at BIGINT NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

@@ -1,0 +1,86 @@
+[
+  {
+    "name": "hero",
+    "source": "output/imagegen/assets/hero/f522134a13014cf7be55753d879bf0d4.png",
+    "asset": "frontend/assets/hero.webp",
+    "dimensions": [
+      2022,
+      778
+    ],
+    "bytes": 188302,
+    "model": "gpt-image-2.5",
+    "skill": "sevnx-imagegen",
+    "prompt": "docs/design-prompts/asset-hero.txt",
+    "sha256": "8bfecd054fe9197947495e3818903d1cb2118fd857d0914b41c294b30296fe41"
+  },
+  {
+    "name": "valley",
+    "source": "output/imagegen/assets/valley/f255208a1f3f4b42b838317828883338.png",
+    "asset": "frontend/assets/valley.webp",
+    "dimensions": [
+      1448,
+      1086
+    ],
+    "bytes": 446870,
+    "model": "gpt-image-2.5",
+    "skill": "sevnx-imagegen",
+    "prompt": "docs/design-prompts/asset-valley.txt",
+    "sha256": "688f5abcf1c85abbf483af88cb08816e057a37d51455e2347b5d318a1d696cdf"
+  },
+  {
+    "name": "town",
+    "source": "output/imagegen/assets/town/e4162012b1d742e7afe3566405376fa3.png",
+    "asset": "frontend/assets/town.webp",
+    "dimensions": [
+      1448,
+      1086
+    ],
+    "bytes": 427384,
+    "model": "gpt-image-2.5",
+    "skill": "sevnx-imagegen",
+    "prompt": "docs/design-prompts/asset-town.txt",
+    "sha256": "eff5f592e896ce20f4cd0e337c8164f14fe2e38faddaf54e886e31f106a49deb"
+  },
+  {
+    "name": "coast",
+    "source": "output/imagegen/assets/coast/29445ec92d6448b89175b26bb28074a6.png",
+    "asset": "frontend/assets/coast.webp",
+    "dimensions": [
+      1448,
+      1086
+    ],
+    "bytes": 415144,
+    "model": "gpt-image-2.5",
+    "skill": "sevnx-imagegen",
+    "prompt": "docs/design-prompts/asset-coast.txt",
+    "sha256": "8b3967195a358a1f1f69794bf23a754c3182ef222fc992148a58d4a444d5629e"
+  },
+  {
+    "name": "gallery",
+    "source": "output/imagegen/assets/gallery/6494cba803b142539170a2f4ab3e7279.png",
+    "asset": "frontend/assets/gallery.webp",
+    "dimensions": [
+      1448,
+      1086
+    ],
+    "bytes": 317014,
+    "model": "gpt-image-2.5",
+    "skill": "sevnx-imagegen",
+    "prompt": "docs/design-prompts/asset-gallery.txt",
+    "sha256": "f564150f8a91ceb2587f8eb9c25b9f4c595f3fad665d94391a6c7cf14017ea64"
+  },
+  {
+    "name": "mark",
+    "source": "output/imagegen/assets/mark/6cdad61939114c6bbe5a337c3b1b614f.png",
+    "asset": "frontend/assets/mark.webp",
+    "dimensions": [
+      192,
+      93
+    ],
+    "bytes": 3376,
+    "model": "gpt-image-2.5",
+    "skill": "sevnx-imagegen",
+    "prompt": "docs/design-prompts/asset-mark.txt",
+    "sha256": "f02099ea52ce1db6f5501a43e9af76365b24d33f183592d9825835861c6dc415"
+  }
+]

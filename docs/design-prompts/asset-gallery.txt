@@ -1,0 +1,3 @@
+Use case: photorealistic-natural
+Asset type: Standalone destination photograph, wide 4:3 crop, no interface or text.
+Primary request: A fictional Chinese cultural attraction called 光影艺术馆. An elegant low contemporary white stone art museum with long horizontal windows beside a shallow reflective pool, a few mature green trees, clean architectural geometry and a broad open blue sky. Quiet naturally sunlit courtyard, realistic premium architectural travel editorial photograph, crisp materials and soft organic reflections. Fresh airy blue-white mood with natural colors, no tinted overlay. No identifiable real museum design, no brand, no signs, no text, no watermark, no interface, no illustration. Full image should serve as a destination photo in 景约 travel ticketing UI.

@@ -1,0 +1,7 @@
+Use case: ui-mockup
+Asset type: Complete 景约 Chinese ticket redemption operator screen, 1440x1024 desktop composition, readable practical application.
+Visual system: white #FFFFFF, pale blue #F2F8FD, primary #1677D2, navy #17324D, muted #6B8095, fine #DFEAF3 border, clear 14–16px Chinese sans-serif, restrained 12px corners. Small blue mountain-water mark and exact logo text 景约.
+Header: 景约 / 票券核销, operator 青岚谷核销员, 退出登录. Content width around 1000px, title 模拟核销, short scope line 当前授权景点：岚溪青岚谷. Main two-column working layout: left form title 核验电子票, text area label 演示核销凭证 with placeholder 请扫码或粘贴票券凭证, secondary 扫码 button, large blue 确认核销 button. Security-sensitive full credentials are NOT printed anywhere in the picture; the input is empty.
+Right an illustrative success result after verification: a restrained check icon, bold 核销成功, detail 岚溪青岚谷 / 成人单人票, 使用日期 2026年10月20日, 入园时间 09:00–18:00, 核销时间 2026-10-20 11:08:32, 操作人 青岚谷核销员. Fine microcopy 同一张票仅可核销一次，重复核验将返回首次核销记录. Bottom short 注意事项: 仅可核销当前授权景点的有效票券。 / 提前、过期或已关闭订单不可核销。 / 此流程为演示，不连接真实景区闸机.
+The screen is a design example, not a claim that a real redemption happened. All labels, text, form controls, status and business data will be rendered in Vue code. No fake monitoring or sales metrics, no user private data. Plenty of whitespace and strong readable hierarchy. No browser/device frame.
+Avoid: English interface text, 山海之间, giant decorative hero, repeated cards, full credential leakage, QR code as the input substitute, neon, beige, tiny text.
