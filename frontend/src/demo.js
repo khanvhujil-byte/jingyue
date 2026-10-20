@@ -4,7 +4,7 @@ import { storage, token } from './storage.js';
 const copy = value => structuredClone(value);
 function state() { return storage.get('shanhai:demo:data', { likes: {}, orders: {}, extra: [], following: {}, signed: false }); }
 function save(data) { storage.set('shanhai:demo:data', data); }
-const me = { id: 95999, nickName: '山海体验官', icon: '' };
+const me = { id: 95999, nickName: '景约体验官', icon: '' };
 export async function demoRequest(path, { method = 'GET', body, signal } = {}) {
   // Demo data is local. Do not manufacture network or queue latency.
   if (signal?.aborted) throw new DOMException('页面已离开', 'AbortError');

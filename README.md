@@ -1,10 +1,10 @@
-# 山海之间 · hm-dianping
+# 景约
 
 一个可以浏览目的地、写旅行手记、参与限量活动票抢购的文旅应用。后端基于黑马点评学习项目扩展，重点实现秒杀受理、可靠消息投递、事务下单和并发点赞；前端提供可直接体验的页面。
 
 [功能](#能做什么) · [设计](#几个实现重点) · [架构](#架构) · [运行](#本地运行) · [Docker](#docker-运行完整项目) · [项目教学](docs/项目教学.md)
 
-![山海之间首页](docs/images/home.png)
+![景约首页](docs/images/home.png)
 
 ## 能做什么
 
@@ -59,8 +59,8 @@ flowchart LR
 推荐 **JDK 17、Maven 3.9、Node.js 20+**。完整后端需要 MySQL 8、Redis 7 和 Kafka。
 
 ```bash
-git clone https://github.com/khanvhujil-byte/hm-dianping.git
-cd hm-dianping
+git clone https://github.com/khanvhujil-byte/jingyue.git
+cd jingyue
 ```
 
 ### 先体验页面

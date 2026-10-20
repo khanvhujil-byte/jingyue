@@ -65,11 +65,11 @@ try {
   await page.getByRole('button', { name: '关注旅人', exact: true }).click();
   await page.getByRole('button', { name: '已关注', exact: true }).waitFor();
   await page.locator('.header-actions a[href="#/publish"]').click();
-  await page.getByLabel('手记标题').fill('我的山海测试手记');
+  await page.getByLabel('手记标题').fill('我的景约测试手记');
   await page.getByLabel('关联目的地').selectOption('92001');
   await page.getByLabel('旅途记录').fill('山风很好。<script>window.untrusted=true</script>');
   await page.locator('#publish-form button[type="submit"]').click();
-  await page.getByRole('heading', { name: '我的山海测试手记', exact: true }).waitFor();
+  await page.getByRole('heading', { name: '我的景约测试手记', exact: true }).waitFor();
   assert.equal(await page.evaluate(() => window.untrusted), undefined);
   assert.match(await page.locator('.article-text').textContent(), /<script>/);
   await page.goto(base + '/#/profile');

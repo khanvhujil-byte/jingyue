@@ -30,4 +30,4 @@ export const server = http.createServer(async (req, res) => {
     res.end(await readFile(filename));
   } catch { res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' }); res.end('没有找到这个页面'); }
 });
-server.listen(port, '127.0.0.1', () => console.log(`山海之间已启动：http://127.0.0.1:${server.address().port}\n真实接口代理：${backend.origin}（移除 /api 前缀）`));
+server.listen(port, '127.0.0.1', () => console.log(`景约已启动：http://127.0.0.1:${server.address().port}\n真实接口代理：${backend.origin}（移除 /api 前缀）`));
